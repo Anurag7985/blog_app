@@ -107,25 +107,3 @@
   <div id="error-message"></div>
   <script>
     // Add form submission handling with JavaScript
-    const form = document.getElementById('signup-form');
-    const errorContainer = document.getElementById('error-message');
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      // Clear previous error messages
-      errorContainer.innerHTML = '';
-
-      // Validate form fields
-      if (form.name.value === '') {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('error');
-        errorMessage.textContent = 'Please enter your name';
-        errorContainer.appendChild(errorMessage);
-      }
-
-      if (form.email.value === '') {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('error');
-        errorMessage.textContent = 'Please enter your email';
-        errorContainer.appendChild(
