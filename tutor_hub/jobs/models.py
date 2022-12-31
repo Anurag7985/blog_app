@@ -1,15 +1,22 @@
 from django.db import models
+from django.utils import timezone
+
 # Create your models here.
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     contact_number = models.CharField(max_length=15)
-
+ 
 class Tutor(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    contact_number = models.CharField(max_length=15)
+    tutor_id = '1'
+    tutor_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    subject_experties = models.CharField(max_length=100, default='')
+    bio = models.TextField(default='')
+
+
 
 class Job(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)

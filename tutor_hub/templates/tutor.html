@@ -85,23 +85,24 @@
 </head>
 <body>
   <h1>Tutor Signup</h1>
-  <form id="signup-form">
+  <form action="" method="POST"> (% csrf_token %}
     <!-- Add form fields for name, email, subject expertise, and bio -->
     <label for="name">Name:</label>
-    <input type="text" id="name" required>
+    <input type="text" class="field" placeholder="John" name="name">
     <label for="email">Email:</label>
-    <input type="email" id="email" required>
+    <input type="text" class="field" placeholder="john@gmail.com" name="email">
     <label for="expertise">Subject Expertise:</label>
-    <select id="expertise" required>
+    <select name="expertise" class="fiels" name="sub">
+      <option value=""></option>
       <option value="math">Math</option>
       <option value="science">Science</option>
       <option value="english">English</option>
       <option value="history">History</option>
     </select>
     <label for="bio">Bio:</label>
-    <textarea id="bio" required></textarea>
+    <textarea placeholder="Add your biodata" class="field" name="bio"></textarea>
+    <input type="submit" value="Submit">
     <!-- Add a submit button -->
-    <button type="submit">Sign Up</button>
   </form>
   <!-- Add a container for error messages -->
   <div id="error-message"></div>

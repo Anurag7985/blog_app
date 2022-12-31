@@ -85,29 +85,35 @@
 </head>
 <body>
   <h1>Student/Parent Signup</h1>
-  <form id="signup-form">
-    <!-- Add form fields for name, email, subject expertise, and bio -->
-    <label for="name">Name:</label>
-    <input type="text" id="name" required>
-    <label for="email">Email:</label>
-    <input type="email" id="email" required>
-    <label for="expertise">Subject Required:</label>
-    <select id="expertise" required>
-      <option value="math">Math</option>
-      <option value="science">Science</option>
-      <option value="english">English</option>
-      <option value="history">History</option>
-      <option value="Physics">Physics</option>
-      <option value="Chemistry">Chemistry</option>
-      <option value="Maths">Maths</option>
-      <option value="Computer">Computer</option>
-    </select>
-    <label for="bio">Bio:</label>
-    <textarea id="bio" required></textarea>
-    <!-- Add a submit button -->
-    <button type="submit">Sign Up</button>
+  <form method="post" action="{% url 'student' %}">
+    {% csrf_token %}
+    <form id="signup-form">
+    
+      <!-- Add form fields for name, email, subject required, and bio -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <label for="Subject Required">Subject Required:</label>
+      <select id="expertise" required>
+        <option value="math">Math</option>
+        <option value="science">Science</option>
+        <option value="english">English</option>
+        <option value="history">History</option>
+        <option value="Physics">Physics</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Maths">Maths</option>
+        <option value="Computer">Computer</option>
+      </select>
+      <label for="bio">Bio:</label>
+      <textarea id="bio" required></textarea>
+      <!-- Add a submit button -->
+      <button type="submit">Sign Up</button>
+    </form>
+    <button type="submit" class="btn btn-primary">Send</button>
   </form>
-  <!-- Add a container for error messages -->
-  <div id="error-message"></div>
-  <script>
-    // Add form submission handling with JavaScript
+  
+  <form id="signup-form">
+    
+    <!-- Add form fields for name, email, subject required, and bio -->
+    
