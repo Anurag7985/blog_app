@@ -9,12 +9,14 @@ class Student(models.Model):
     contact_number = models.CharField(max_length=15)
  
 class Tutor(models.Model):
-    tutor_id = '1'
-    tutor_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    subject_experties = models.CharField(max_length=100, default='')
+    subject_experties = models.CharField(max_length=100)
     bio = models.TextField(default='')
+    
+
+
+    
 
 
 
