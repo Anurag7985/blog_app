@@ -2,9 +2,30 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from jobs.models import Tutor
 from django.views.decorators.csrf import requires_csrf_token
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
+
+def tutor_signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect(tutor_signup)
+    else:
+        form = SignUpForm()
+    return render(request, 't_signup.html', {'form': form})
+        
+        
+    
+
+
+
 def home(request):
     
     return render(request, 'home.html')
