@@ -1,20 +1,20 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from jobs.models import Tutor
-from jobs.models import Resgistration
 from django.views.decorators.csrf import requires_csrf_token
 from django.contrib.auth.forms import UserCreationForm
+from .forms import TSignUpForm
 
 
 # Create your views here.
 @requires_csrf_token
 def register(request):
     if request.method == "POST":
-        fm = UserCreationForm(request.POST)
+        fm = TSignUpForm(request.POST)
         if fm.is_valid():
             fm.save()
     else:
-        fm = UserCreationForm()
+        fm = TSignUpForm()
     return render(request, 'tsignup.html',{'form':fm})
 
         
