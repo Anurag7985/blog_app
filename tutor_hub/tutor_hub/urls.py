@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('tutor', views.tutor, name='save'),
-    path('student', views.student)
+    path('student', views.student),
+    path('tsignup', views.register)
 ]
  

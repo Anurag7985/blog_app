@@ -16,7 +16,9 @@ class Tutor(models.Model):
     
 
 
-    
+class Resgistration(models.Model):
+    user = models.CharField(max_length=240)
+    password = models.CharField(max_length=240)
 
 
 

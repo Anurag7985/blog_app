@@ -1,13 +1,9 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
-class ContactForm(forms.Form):
-    name = forms.CharField()
-    email = forms.EmailField()
-    subject_required = forms.charField()
-    bio = forms.CharField(widget=forms.Textarea)
-class Tutor(models.Model):
-    tutor_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255)
-    subject_expertise = models.CharField(max_length=255)
-    bio = models.TextField(default='')
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Enter a valid email address.')
+
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'email', 'password1', 'password2')

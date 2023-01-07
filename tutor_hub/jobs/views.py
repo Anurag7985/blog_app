@@ -1,25 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from jobs.models import Tutor
+from jobs.models import Resgistration
 from django.views.decorators.csrf import requires_csrf_token
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
-
-def tutor_signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect(tutor_signup)
+@requires_csrf_token
+def register(request):
+    if request.method == "POST":
+        fm = UserCreationForm(request.POST)
+        if fm.is_valid():
+            fm.save()
     else:
-        form = SignUpForm()
-    return render(request, 't_signup.html', {'form': form})
+        fm = UserCreationForm()
+    return render(request, 'tsignup.html',{'form':fm})
+
         
         
     
@@ -31,7 +28,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-@requires_csrf_token
+
 def tutor(request):
     if request.method == 'POST':
         name = request.POST.get('name')

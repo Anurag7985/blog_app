@@ -3,6 +3,7 @@ from .models import Student
 from .models import Tutor
 from .models import Job
 from .models import Application
+from .models import Resgistration
 
 # Register your models here.
 
@@ -11,5 +12,6 @@ admin.site.register(Student)
 admin.site.register(Tutor)
 admin.site.register(Job)
 admin.site.register(Application)
+admin.site.register(Resgistration)
 
 
