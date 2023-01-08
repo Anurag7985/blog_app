@@ -1,21 +1,37 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from jobs.models import Tutor
 from django.views.decorators.csrf import requires_csrf_token
 from django.contrib.auth.forms import UserCreationForm
-from .forms import TSignUpForm
+from .forms import SignUpForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
 @requires_csrf_token
-def register(request):
+def signup(request):
     if request.method == "POST":
-        fm = TSignUpForm(request.POST)
+        fm = SignUpForm(request.POST)
         if fm.is_valid():
             fm.save()
     else:
-        fm = TSignUpForm()
-    return render(request, 'tsignup.html',{'form':fm})
+        fm = SignUpForm()
+    return render(request, 'signup.html',{'form':fm})
+
+def login(request):
+    if request.method == 'POST':
+        fm = AuthenticationForm(request=request, data=request.POST)
+        if fm.is_valid():
+            uname = fm.cleaned_data['username']
+            upass = fm.cleaned_data['password']
+            user = authenticate(username=uname, password=upass)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/tutor/')
+    else:
+        fm = AuthenticationForm()
+    return render(request,'login.html',{'form':fm})
 
         
         
