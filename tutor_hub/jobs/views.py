@@ -1,11 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from jobs.models import Tutor
 from django.views.decorators.csrf import requires_csrf_token
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import HttpResponseRedirect
 
 
 # Create your views here.
@@ -27,8 +28,9 @@ def login(request):
             upass = fm.cleaned_data['password']
             user = authenticate(username=uname, password=upass)
             if user is not None:
-                login(request, user)
-                return HttpResponseRedirect('/tutor/')
+                print("Sucress")
+                #login(request, user)    
+                return HttpResponseRedirect('/tutor')
     else:
         fm = AuthenticationForm()
     return render(request,'login.html',{'form':fm})
@@ -40,8 +42,12 @@ def login(request):
 
 
 def home(request):
-    
     return render(request, 'home.html')
+
+
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 
 
@@ -59,4 +65,11 @@ def tutor(request):
 
 
 def student(request):
-    return render(request, 'student.html', {})
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject_expert = request.POST.get('subjectRequired')
+        submit_obj = Student(name=name, email=email, subject_experties=subject_expert, bio=biodata)
+        submit_obj.save()
+  
+    return render(request, 'tutor.html')

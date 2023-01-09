@@ -87,15 +87,13 @@
   <h1>Student/Parent Signup</h1>
   <form method="post" action="{% url 'student' %}">
     {% csrf_token %}
-    <form id="signup-form">
-    
-      <!-- Add form fields for name, email, subject required, and bio -->
+ <!-- Add form fields for name, email, subject required, and bio -->
       <label for="name">Name:</label>
       <input type="text" id="name" required>
       <label for="email">Email:</label>
       <input type="email" id="email" required>
       <label for="Subject Required">Subject Required:</label>
-      <select id="expertise" required>
+      <select name="subjectRequired" required>
         <option value="math">Math</option>
         <option value="science">Science</option>
         <option value="english">English</option>
@@ -103,17 +101,15 @@
         <option value="Physics">Physics</option>
         <option value="Chemistry">Chemistry</option>
         <option value="Maths">Maths</option>
+        <option value="Programming">Programming</option>
         <option value="Computer">Computer</option>
       </select>
-      <label for="bio">Bio:</label>
-      <textarea id="bio" required></textarea>
+      <label for="contact">Contact:</label>
+      <input type="text" name="contact" required>
+
       <!-- Add a submit button -->
-      <button type="submit">Sign Up</button>
-    </form>
-    <button type="submit" class="btn btn-primary">Send</button>
+    <input type="submit" value="Submit">
   </form>
-  
-  <form id="signup-form">
-    
-    <!-- Add form fields for name, email, subject required, and bio -->
+</body>
+</html>
     

@@ -6,7 +6,8 @@ from django.utils import timezone
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    contact_number = models.CharField(max_length=15)
+    subject = models.CharField(max_length=100)
+    contact_number = models.CharField(max_length=13)
  
 class Tutor(models.Model):
     name = models.CharField(max_length=255)
@@ -14,13 +15,6 @@ class Tutor(models.Model):
     subject_experties = models.CharField(max_length=100)
     bio = models.TextField(default='')
     
-
-
-class Resgistration(models.Model):
-    user = models.CharField(max_length=240)
-    password = models.CharField(max_length=240)
-
-
 
 class Job(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
