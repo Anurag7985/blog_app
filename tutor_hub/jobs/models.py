@@ -6,7 +6,7 @@ from django.utils import timezone
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    subject = models.CharField(max_length=100)
+    subject_required = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=13)
  
 class Tutor(models.Model):

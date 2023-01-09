@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from jobs.models import Tutor
+from jobs.models import Tutor, Student
 from django.views.decorators.csrf import requires_csrf_token
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
@@ -30,7 +30,7 @@ def login(request):
             if user is not None:
                 print("Sucress")
                 #login(request, user)    
-                return HttpResponseRedirect('/tutor')
+                return HttpResponseRedirect('/dashboard')
     else:
         fm = AuthenticationForm()
     return render(request,'login.html',{'form':fm})
@@ -68,8 +68,9 @@ def student(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        subject_expert = request.POST.get('subjectRequired')
-        submit_obj = Student(name=name, email=email, subject_experties=subject_expert, bio=biodata)
-        submit_obj.save()
+        subjectRequired = request.POST.get('subjectRequired')
+        contact = request.POST.get('contact')
+        submit = Student(name=name, email=email, subject_required=subjectRequired, contact_number=contact)
+        submit.save()
   
-    return render(request, 'tutor.html')
+    return render(request, 'student.html')
