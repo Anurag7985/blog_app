@@ -68,7 +68,7 @@ def student(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        subjectRequired = request.POST.get('subjectRequired')
+        subjectRequired = request.POST.get('subject Required')
         contact = request.POST.get('contact')
         submit = Student(name=name, email=email, subject_required=subjectRequired, contact_number=contact)
         submit.save()

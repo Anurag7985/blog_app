@@ -3,17 +3,19 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Student(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    subject_required = models.CharField(max_length=100)
-    contact_number = models.CharField(max_length=13)
- 
+
 class Tutor(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     subject_experties = models.CharField(max_length=100)
     bio = models.TextField(default='')
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject_required = models.CharField(max_length=100, default='Math')
+    contact_number = models.CharField(max_length=13)
+ 
     
 
 class Job(models.Model):
