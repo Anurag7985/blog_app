@@ -10,6 +10,7 @@ from django.shortcuts import HttpResponseRedirect
 
 
 # Create your views here.
+
 @requires_csrf_token
 def signup(request):
     if request.method == "POST":

@@ -1,7 +1,10 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
+#User.objects.all().delete()
+
 
 
 class Tutor(models.Model):
@@ -13,8 +16,17 @@ class Tutor(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    subject_required = models.CharField(max_length=100, default='Math')
-    contact_number = models.CharField(max_length=13)
+    subject_required = models.CharField(max_length=100)
+    contact_number = models.CharField(max_length=13, primary_key=True)
+    
+    
+class Student(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
+    # additional fields specific to students
+
+class Tutor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
+    # additional fields specific to tutors
  
     
 
