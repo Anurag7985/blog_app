@@ -1,11 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from jobs.models import Tutor, Student
 from django.views.decorators.csrf import requires_csrf_token
-from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.shortcuts import HttpResponseRedirect
 
 
