@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from jobs.models import Tutor, Student
+from jobs.models import TutorReg, StudentReg
 from django.views.decorators.csrf import requires_csrf_token
 from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -56,7 +56,7 @@ def tutor(request):
         email = request.POST.get('email')
         subject_expert = request.POST.get('subjectExpert')
         biodata = request.POST.get('bio')
-        submit_obj = Tutor(name=name, email=email, subject_experties=subject_expert, bio=biodata)
+        submit_obj = TutorReg(name=name, email=email, subject_experties=subject_expert, bio=biodata)
         submit_obj.save()
   
     return render(request, 'tutor.html')
@@ -69,7 +69,7 @@ def student(request):
         email = request.POST.get('email')
         subjectRequired = request.POST.get('subject Required')
         contact = request.POST.get('contact')
-        submit = Student(name=name, email=email, subject_required=subjectRequired, contact_number=contact)
+        submit = StudentReg(name=name, email=email, subject_required=subjectRequired, contact_number=contact)
         submit.save()
   
     return render(request, 'student.html')
