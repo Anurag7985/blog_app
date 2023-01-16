@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 
-class User(models.Model):
+class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
     is_tutor = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
@@ -12,6 +12,7 @@ class User(models.Model):
 
 class Student():
     user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='student')
+    user= models.OneToOneField(Fiels)
     
 
 
