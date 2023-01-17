@@ -1,18 +1,17 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 # Create your models here.
+class Role(models.Model):
+    name = models.CharField(max_length=20)
 
-class User(AbstractUser):
-    is_admin = models.BooleanField(default=False)
-    is_tutor = models.BooleanField(default=False)
-    is_student = models.BooleanField(default=False)
-    
-
-class Student():
-    user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='student')
-    user= models.OneToOneField(Fiels)
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='users')
+    groups = models.ManyToManyField(Group, blank=True, related_name='custom_users')
     
 
 
