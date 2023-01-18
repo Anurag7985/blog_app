@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from jobs.models import TutorReg, StudentReg
 from django.views.decorators.csrf import requires_csrf_token
-from .forms import SignUpForm
+from .forms import SignUpForm 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.shortcuts import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
