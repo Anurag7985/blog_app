@@ -1,12 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import CustomUser, Role
+from .models import User
 
 
 class SignUpForm(UserCreationForm):
-    role = forms.ModelChoiceField(queryset=Role.objects.all())
     class Meta:
-        model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email']
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'is_tutor', 'is_student']
 # Change the default email name from Email address to Email
         labels = {'email': 'Email'}

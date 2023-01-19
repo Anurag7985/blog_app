@@ -31,7 +31,7 @@ def login(request):
             upass = fm.cleaned_data['password']
             user = authenticate(username=uname, password=upass)
             if user is not None:
-                print("Sucress")
+                #print("Sucress")
                 #login(request, user)    
                 return HttpResponseRedirect('/dashboard')
     else:
