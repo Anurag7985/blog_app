@@ -6,6 +6,6 @@ from .models import User
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'is_tutor', 'is_student']
+        fields = ['username', 'first_name', 'last_name', 'email', 'is_tutor', 'is_student']
 # Change the default email name from Email address to Email
         labels = {'email': 'Email'}
