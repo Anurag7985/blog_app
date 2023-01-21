@@ -31,17 +31,5 @@ class StudentReg(models.Model):
     #user = models.OneToOneField(User, on_delete=models.CASCADE)
     # additional fields specific to tutors
  
-    
 
-class Job(models.Model):
-    student = models.ForeignKey(StudentReg, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    location = models.CharField(max_length=100)
-    hourly_rate = models.DecimalField(max_digits=5, decimal_places=2)
-
-class Application(models.Model):
-    tutor = models.ForeignKey(TutorReg, on_delete=models.CASCADE)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    cover_letter = models.TextField()
 
