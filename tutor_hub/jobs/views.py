@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from jobs.models import TutorReg, StudentReg
 from django.views.decorators.csrf import requires_csrf_token
-from .forms import SignUpForm 
+from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
@@ -16,9 +16,9 @@ def signup(request):
     if request.method == "POST":
         fm = SignUpForm(request.POST)
         if fm.is_valid():
-            fm.save()
-           #  login(request, user)
-           # return redirect('home')
+            user =fm.save()
+            login(request, user)
+            return redirect('home')
     else:
         fm = SignUpForm()
     return render(request, 'signup.html',{'form':fm})
@@ -31,7 +31,7 @@ def login(request):
             upass = fm.cleaned_data['password']
             user = authenticate(username=uname, password=upass)
             if user is not None:
-                #print("Sucress")
+                #print("Success")
                 #login(request, user)    
                 return HttpResponseRedirect('/dashboard')
     else:

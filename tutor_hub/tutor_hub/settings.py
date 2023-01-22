@@ -72,8 +72,6 @@ TEMPLATES = [
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR]
 
-AUTH_USER_MODEL = 'jobs.User'
-
 
 
 
