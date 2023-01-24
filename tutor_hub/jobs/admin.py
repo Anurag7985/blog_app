@@ -8,4 +8,3 @@ from .models import TutorReg
 admin.site.register(StudentReg)
 admin.site.register(TutorReg)
 
-
