@@ -16,14 +16,6 @@ class StudentReg(models.Model):
     subject_required = models.CharField(max_length=100, default='default subject')
     contact_number = models.CharField(max_length=13, default='0000000000')
     
-    
-#class Student(models.Model):
-  #  user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # additional fields specific to students
 
-#class Tutor(models.Model):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # additional fields specific to tutors
- 
 
 
