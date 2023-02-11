@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
-# Create your models here.
 
 class TutorReg(models.Model):
     name = models.CharField(max_length=255, default='default name')
