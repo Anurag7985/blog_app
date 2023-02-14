@@ -13,6 +13,7 @@ class StudentReg(models.Model):
     subject_required = models.CharField(max_length=100, default='default subject')
     contact_number = models.CharField(max_length=13, default='0000000000')
     
-
+class User(models.Model):
+    
 
 
