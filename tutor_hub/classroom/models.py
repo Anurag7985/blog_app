@@ -14,6 +14,8 @@ class StudentReg(models.Model):
     contact_number = models.CharField(max_length=13, default='0000000000')
     
 class User(models.Model):
+    a
+    
     
 
 
